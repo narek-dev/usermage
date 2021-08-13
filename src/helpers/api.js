@@ -25,3 +25,14 @@ export const changeData = (data, id) => {
       return err;
     });
 };
+
+export const getSingleUser = (id) => {
+  return instance.get(`users/${id}`)
+  .then( res => {
+    console.log(res);
+    return res.data.data
+  })
+  .catch( err => {
+    console.error(err);
+  })
+}

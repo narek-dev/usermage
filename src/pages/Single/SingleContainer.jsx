@@ -8,10 +8,7 @@ import Single from "./Single";
 
 export default function SingleContainer() {
   const entry = useSelector( state => state.users.entry );
-
   const [changed, setChanged] = useState(false);
-  const [editable, setEditable] = useState(false);
-  
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -38,7 +35,7 @@ export default function SingleContainer() {
     entry && (
       <Single
         data={entry}
-        edit={{ value: editable, setValue: setEditable }}
+        edit={true}
         changed={changed}
         changeName = {changeName}
         saveChanges = {saveChanges}

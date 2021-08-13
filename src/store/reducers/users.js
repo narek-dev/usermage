@@ -11,6 +11,7 @@ export const initialState = {
   entry: null,
   editedUsers: [],
   oldValues: null,
+  modalUser: null,
 };
 
 /* istanbul ignore next */
@@ -19,10 +20,10 @@ const reducer = (state = initialState, action) => {
     case actionTypes.SET_USERS:
       return {
         ...state,
-        users: action.payload,
+        users: [...state.users, ...action.payload]
       };
 
-    case actionTypes.REMOVE_ALL_USERS:
+    case actionTypes.CLEAR_USERS:
       return {
         ...state,
         users: [],
@@ -72,7 +73,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         editedUsers: [...state.editedUsers, action.payload],
       };
-      
+    
+    case actionTypes.SHOW_MODAL: {
+      return {
+        ...state,
+        modalUser: action.payload
+      }
+    }
+
+    case actionTypes.HIDE_MODAL: {
+      return {
+        ...state,
+        modalUser: null
+      }
+    }
+
     default:
       return state;
   }

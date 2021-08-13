@@ -1,9 +1,9 @@
 import React from 'react';
 import s from './UserCard.module.css';
 
-export default function UserCard({data, userClick}) {
+export default function UserCard({data, userClick, lastElementRef}) {
     return (
-        <div onClick={() => userClick(data)} className={s.card}>
+        <div onClick={() => userClick(data)} className={s.card} ref={lastElementRef}>
             <div className={s.avatar}>
                 <img src={data.avatar} alt={`${data.first_name}'s avatar`} />
             </div>

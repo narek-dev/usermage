@@ -1,4 +1,4 @@
-import { addEditedUser, setEntry, setPagination, setUsers } from "./users";
+import { addEditedUser, setEntry, setPagination, setUsers, showModal } from "./users";
 import * as api from "../../helpers/api";
 import { mergeUsers } from "../../helpers/functions";
 
@@ -23,7 +23,11 @@ export const setUsersAsync = (page = 1) => {
 
 
     dispatch(setPagination(pagination));
+    console.log(getState().users.pagination);
+
     dispatch( setUsers(users) );
+    return new Promise(res => res(true));
+
   };
 };
 
@@ -44,3 +48,12 @@ export const changeUserAsync = (user) => async (dispatch) => {
     // I will create an error notification method.
   }
 };
+
+export const getSingleUserAsync = (id) => async (dispatch) => {
+  try {
+    const user = await api.getSingleUser(id);
+    dispatch(showModal(user));
+  } catch (err) {
+    console.error(err);
+  }
+}

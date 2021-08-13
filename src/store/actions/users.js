@@ -7,6 +7,12 @@ export const setUsers = (users) => {
   };
 };
 
+export const clearUsers = () => {
+  return {
+    type: actionTypes.CLEAR_USERS,
+  }
+}
+
 export const setPagination = (pagination) => {
   return {
     type: actionTypes.SET_PAGINATION,
@@ -52,5 +58,18 @@ export const addEditedUser = (user) => {
   return {
     type: actionTypes.ADD_EDITED_USER,
     payload: user
+  }
+}
+
+export const showModal = (user) => {
+  return {
+    type: actionTypes.SHOW_MODAL,
+    payload: user
+  }
+}
+
+export const hideModal = () => {
+  return {
+    type: actionTypes.HIDE_MODAL
   }
 }
