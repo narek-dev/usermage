@@ -22,6 +22,15 @@
   background-color: #5ba7ff;
 }
 
+.success {
+  background-color: rgb(83, 202, 97);
+  color: #fff;
+}
+
+.success:hover {
+  background-color: rgb(91, 209, 105);
+}
+
 .btn:disabled {
   background-color: #d1d1d1;
   color: #fff;

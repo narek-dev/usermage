@@ -10,9 +10,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 30px 0;
-  background: rgb(183,214,255);
-  background: linear-gradient(344deg, rgba(183,214,255,1) 23%, rgba(57,138,255,1) 100%);
+  background: rgba(57,138,255,1);
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .container {
@@ -31,4 +31,57 @@ body {
 
 h1,h2,h3,h4,h5,h6 {
   color: #353535;
+}
+
+.fade-enter{
+   opacity: 0;
+   transform: translateX(-250px);
+}
+.fade-exit{
+   opacity: 1;
+   transform: translateX(0);
+}
+.fade-enter-active{
+   opacity: 1;
+   transform: translateX(0);
+}
+.fade-exit-active{
+   opacity: 0;
+   transform: translateX(250px);
+}
+.fade-enter-active,
+.fade-exit-active{
+   transition: all 500ms;
+}
+
+
+.page {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
 }

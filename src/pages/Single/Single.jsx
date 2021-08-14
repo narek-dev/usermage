@@ -1,12 +1,13 @@
 import React from "react";
-import Footer from "./elements/Footer";
+import { Link } from "react-router-dom";
 import User from './elements/User';
+import s from './Single.module.css';
 
 export default function Single(props) {
   return (
     <div className="wrapper">
-      <User data={props.data} edit={props.edit} changeName={props.changeName} />
-      <Footer changed={props.changed} saveChanges={props.saveChanges} />
+      <Link to="/" className={s.backToUsers}><span>&larr;</span> Back to users</Link>
+      <User data={props.data} edit={props.edit} changeName={props.changeName} saveChanges={props.saveChanges}/>
     </div>
   );
 }
