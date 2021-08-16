@@ -54,7 +54,7 @@ export default function HomeContainer() {
 
   const loadUsers = (page = 1) => {
     setisLoading(true);
-    dispatch(setUsersAsync(page)).then((res) => {
+    dispatch(setUsersAsync(page)).then(() => {
       setisLoading(false);
     })
   };
