@@ -9,7 +9,10 @@ import {
   showModal,
 } from "../../store/actions/users";
 import { useHistory } from "react-router";
-import { getSingleUserAsync, setUsersAsync } from "../../store/actions/usersAsync";
+import {
+  getSingleUserAsync,
+  setUsersAsync,
+} from "../../store/actions/usersAsync";
 import { useQuery } from "../../helpers/functions";
 
 export default function HomeContainer() {
@@ -38,18 +41,18 @@ export default function HomeContainer() {
   };
 
   const checkUrlId = () => {
-    if ( query.get('id') ) {
-      dispatch(getSingleUserAsync(query.get('id')));
+    if (query.get("id")) {
+      dispatch(getSingleUserAsync(query.get("id")));
     }
-  }
+  };
 
   const loadUsers = (page = 1) => {
-    dispatch(setUsersAsync(page)).then(() => {
-      setHasMore(state.pagination.page < state.pagination.total_pages);
-    });
-
-    return new Promise((res) => res());
+    dispatch(setUsersAsync(page));
   };
+
+  useEffect(() => {
+    setHasMore(state.pagination.page < state.pagination.total_pages);
+  }, [state.pagination.page, state.pagination.total_pages]);
 
   useEffect(() => {
     dispatch(clearEntry());

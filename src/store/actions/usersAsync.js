@@ -26,8 +26,6 @@ export const setUsersAsync = (page = 1) => {
     console.log(getState().users.pagination);
 
     dispatch( setUsers(users) );
-    return new Promise(res => res(true));
-
   };
 };
 
