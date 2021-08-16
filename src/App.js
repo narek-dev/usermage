@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import Navbar from "./components/navbar/Navbar";
 import CompareContainer from "./pages/Compare/CompareContainer";

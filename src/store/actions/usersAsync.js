@@ -20,15 +20,16 @@ export const setUsersAsync = (page = 1) => {
       total: data.total,
       total_pages: data.total_pages,
     };
-
+    
 
     dispatch(setPagination(pagination));
-    console.log(getState().users.pagination);
 
     dispatch( setUsers(users) );
+    console.log(2,pagination)
     return new Promise(res => res(true));
 
   };
+
 };
 
 export const changeUserAsync = (user) => async (dispatch) => {

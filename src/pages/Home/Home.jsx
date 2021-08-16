@@ -3,6 +3,7 @@ import s from "./Home.module.css";
 import UsersList from "./elements/UsersList";
 import UserModal from "./elements/UserModal/UserModal";
 import { CSSTransition } from "react-transition-group";
+import Loader from "../../components/Loader";
 
 export default function Home({
   users,
@@ -10,6 +11,7 @@ export default function Home({
   modalEvents,
   lastElementRef,
   modalUser,
+  isLoading
 }) {
   return (
     <div className="wrapper">
@@ -29,6 +31,8 @@ export default function Home({
         users={users}
         lastElementRef={lastElementRef}
       />
+
+      {isLoading && <Loader />}
     </div>
   );
 }

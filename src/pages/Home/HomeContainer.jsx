@@ -9,11 +9,15 @@ import {
   showModal,
 } from "../../store/actions/users";
 import { useHistory } from "react-router";
-import { getSingleUserAsync, setUsersAsync } from "../../store/actions/usersAsync";
+import {
+  getSingleUserAsync,
+  setUsersAsync,
+} from "../../store/actions/usersAsync";
 import { useQuery } from "../../helpers/functions";
 
 export default function HomeContainer() {
   const [hasMore, setHasMore] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
   const state = useSelector((state) => state.users);
   const users = state.users;
   const modalUser = state.modalUser;
@@ -31,6 +35,7 @@ export default function HomeContainer() {
     dispatch(hideModal());
   };
 
+
   const modalEditClick = (user) => {
     dispatch(setEntry(user));
     dispatch(hideModal());
@@ -38,24 +43,27 @@ export default function HomeContainer() {
   };
 
   const checkUrlId = () => {
-    if ( query.get('id') ) {
-      dispatch(getSingleUserAsync(query.get('id')));
+    if (query.get("id")) {
+      dispatch(getSingleUserAsync(query.get("id")));
     }
-  }
-
-  const loadUsers = (page = 1) => {
-    dispatch(setUsersAsync(page)).then(() => {
-      setHasMore(state.pagination.page < state.pagination.total_pages);
-    });
-
-    return new Promise((res) => res());
   };
 
   useEffect(() => {
-    dispatch(clearEntry());
-    dispatch(clearUsers());
+    setHasMore(state.pagination.page < state.pagination.total_pages);
+  },[state.pagination.page, state.pagination.total_pages])
+
+  const loadUsers = (page = 1) => {
+    setisLoading(true);
+    dispatch(setUsersAsync(page)).then((res) => {
+      setisLoading(false);
+    })
+  };
+
+  useEffect( () => {
+    dispatch( clearEntry() );
+    dispatch( clearUsers() );
     checkUrlId();
-    loadUsers(1);
+    loadUsers( 1 );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -84,6 +92,7 @@ export default function HomeContainer() {
         close: closeModalClick,
         action: modalEditClick,
       }}
+      isLoading={isLoading}
     />
   );
 }
