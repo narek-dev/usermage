@@ -14,7 +14,7 @@ export default function HomeContainer() {
 
   const singleUserClickEvent = (user) => {
     dispatch(setEntry(user));
-    history.push(`/single/${user.id}`);
+    history.push(`/user/${user.id}`);
   };
 
   const changePage = (page) => {
