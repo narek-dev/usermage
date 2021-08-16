@@ -6,7 +6,7 @@ import s from "../Single.module.css";
 export default function Footer({ changed, saveChanges }) {
   return (
     <div className={s.footer}>
-      <Link className={s.footerButton} to="/">
+      <Link className={s.footerButton} to="/users">
         &lt; Back to list
       </Link>
 

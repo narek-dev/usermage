@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import CompareContainer from "./pages/Compare/CompareContainer";
 import HomeContainer from "./pages/Home/HomeContainer";
@@ -9,15 +9,20 @@ function App() {
     <div className="container">
       <BrowserRouter>
         <Navbar />
-        
+
         <Switch>
-          <Route exact path="/">
+          <Route
+            exact
+            path="/"
+            render={() => <Redirect to="/users" />}
+          />
+          <Route exact path="/users">
             <HomeContainer />
           </Route>
-          <Route path="/single">
+          <Route path="/user">
             <SingleContainer />
           </Route>
-          <Route path="/compare">
+          <Route path="/confirmation">
             <CompareContainer />
           </Route>
         </Switch>
