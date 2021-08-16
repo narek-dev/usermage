@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
     return (
         <div className={s.container}>
-            <Link to='/' className={s.logoContainer}>
+            <Link to='/users' className={s.logoContainer}>
                 <div className={s.logo}>
                     <img src={logo} alt="Logo" />
                 </div>

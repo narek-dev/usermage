@@ -14,7 +14,7 @@ export default function SingleContainer() {
 
   useEffect(() => {
     if (!entry) {
-      history.push("/");
+      history.push("/users");
       return;
     }
     dispatch( saveOldValues( entry.first_name, entry.last_name ) );
@@ -28,7 +28,7 @@ export default function SingleContainer() {
 
   const saveChanges = () => {
     dispatch(changeUserAsync(entry));
-    history.push('/compare')
+    history.push('/confirmation')
   }
 
   return (

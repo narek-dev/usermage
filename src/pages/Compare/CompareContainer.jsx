@@ -11,14 +11,14 @@ export default function CompareContainer() {
 
   useEffect(() => {
     if (!entry) {
-      history.push("/");
+      history.push("/users");
       return;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const backButtonEvent = () => {
-    history.push("/");
+    history.push("/users");
   };
 
   return (

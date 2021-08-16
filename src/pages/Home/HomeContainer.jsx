@@ -28,7 +28,7 @@ export default function HomeContainer() {
 
   const singleUserClickEvent = (user) => {
     dispatch(showModal(user));
-    history.push(`/?id=${user.id}`);
+    history.push(`/users?id=${user.id}`);
   };
 
   const closeModalClick = () => {
@@ -39,7 +39,7 @@ export default function HomeContainer() {
   const modalEditClick = (user) => {
     dispatch(setEntry(user));
     dispatch(hideModal());
-    history.push(`/single/${user.id}`);
+    history.push(`/user/${user.id}`);
   };
 
   const checkUrlId = () => {

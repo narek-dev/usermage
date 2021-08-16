@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Redirect, Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import Navbar from "./components/navbar/Navbar";
 import CompareContainer from "./pages/Compare/CompareContainer";
@@ -6,14 +6,15 @@ import HomeContainer from "./pages/Home/HomeContainer";
 import SingleContainer from "./pages/Single/SingleContainer";
 
 const routes = [
-  { path: "/", name: "Home", Component: HomeContainer, exact: true },
-  { path: "/single", name: "Single", Component: SingleContainer, exact: false },
+  { path: "/users", name: "Users", Component: HomeContainer, exact: false },
+  { path: "/user", name: "Single User", Component: SingleContainer, exact: false },
   {
-    path: "/compare",
-    name: "Compare",
+    path: "/confirmation",
+    name: "Confirmation",
     Component: CompareContainer,
     exact: false,
   },
+  
 ];
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
     <div className="container">
       <BrowserRouter>
         <Navbar />
+        <Route exact path='/'>
+          <Redirect to='/users'/>
+        </Route>
 
         {routes.map(({ path, Component, exact }) => (
           <Route key={path} exact={exact} path={path}>
